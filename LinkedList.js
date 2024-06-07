@@ -15,10 +15,55 @@
         }
     }
 
-    prepend(value){
+    prepend(value) {
         let newNode = new Node(value);
         newNode.nextNode = this.listHead;
         this.listHead = newNode;
+    }
+
+    size() {
+        let pon = this.listHead;
+        let num = 0;
+        while (pon.nextNode != null) {
+            pon = pon.nextNode;
+            num++
+        }
+        return num;
+    }
+
+    head() {
+        return this.listHead;
+    }
+
+    tail() {
+        let pon = this.listHead;
+        while (pon.nextNode != null) {
+            pon = pon.nextNode;
+        }
+        return pon;
+    }
+
+    at(index) {
+        let pon = this.listHead;
+        for(let i = 0; i < index; i++) {
+            pon = pon.nextNode;
+        }
+        if(pon == null){
+           return 'Error. There is no item for this index';
+        }
+        return pon;
+    }
+
+    pop(){
+        if(this.listHead == null) return;
+        if(this.listHead.nextNode == null) {
+            this.listHead = null;
+        }
+        let pon = this.listHead;
+            while (pon.nextNode.nextNode != null) {
+                pon = pon.nextNode;
+            }
+            pon.nextNode = null;
     }
  }
 
