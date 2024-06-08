@@ -65,6 +65,47 @@
             }
             pon.nextNode = null;
     }
+
+    contains(value) {
+        if (this.listHead == null) {
+            return false; 
+        }
+
+        let pon = this.listHead;
+        while (pon != null) {
+            if (pon.value == value) {
+                return true; 
+            }
+            pon = pon.nextNode;
+        }
+
+        return false; 
+    }
+    find(value) {
+        if (this.listHead == null) {
+            return null; 
+        }
+        let pon = this.listHead;
+        let index = -1
+        while (pon != null) {
+            if (pon.value == value) {
+                return index; 
+            }
+            pon = pon.nextNode;
+            index++
+        }
+        return null;
+    }
+
+    toString() {
+        let pon = this.listHead;
+        let string = '';
+        while (pon != null) {
+            let pon = pon.nextNode;
+            string += ` ( ${pon.value} ->)`
+        }
+        return string += 'null';
+    }
  }
 
  class Node {
