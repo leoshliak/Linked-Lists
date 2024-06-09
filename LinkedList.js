@@ -106,6 +106,32 @@
         }
         return string += 'null';
     }
+
+    insertAt(value, index) {
+        if (this.listHead == null) this.prepend(value);
+        let pon = this.listHead;
+        let prev = null;
+        for(let i = 0; i < index; i++) {
+            prev = pon
+            pon = pon.nextNode;
+            if(pon == null) break;
+        }
+        newNode = new Node(value);
+        prev.nextNode = newNode;
+        newNode.nextNode = pon;
+    }
+
+    removeAt(index) {
+        if (this.listHead == null) return;
+        let pon = this.listHead;
+        let prev = null;
+        for(let i = 0; i < index; i++) {
+            prev = pon
+            pon = pon.nextNode;
+            if(pon == null) return;
+        }
+        prev.nextNode = pon.nextNode;
+    }
  }
 
  class Node {
